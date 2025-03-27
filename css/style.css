@@ -1,0 +1,30 @@
+@import url('reset.css');
+@import url('fonts.css');
+
+
+
+
+.container {
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 100px 1fr 50px;
+}
+
+header {
+    background-color: rgb(126, 126, 126);
+    font-weight: bold;
+    font-size: 2rem;
+    display: grid;
+    align-content: center;
+}
+
+footer {
+    background-color: rgb(72, 18, 85);
+    display: grid;
+    justify-content: center;
+    align-content: center;
+}
+
+main {
+
+}
