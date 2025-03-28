@@ -19,6 +19,9 @@ Odin Javascript course project
 - connect both
 - some styling ✅
 - full styling
+    - make look better
+    - assign a random color to each book from a predefined pool
+    
 
 ### Reference
 - https://sultanbadri.github.io/virtual-library/
