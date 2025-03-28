@@ -9,7 +9,7 @@
 .container {
     height: 100vh;
     background-color: rgb(171, 128, 75);
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Coves', sans-serif;
     display: grid;
     grid-template-rows: 100px 1fr 50px;
 }
@@ -61,40 +61,88 @@ main {
     padding: 20px;
 
     display: grid;
-    grid-template-columns: repeat(auto-fit, 300px);
+    grid-template-columns: repeat(auto-fit, 320px);
     gap: 20px;
     align-content: start;
 }
 
-main .book * {
+/* main .book * {
     outline: 1px solid rgb(184, 227, 30);
-}
+} */
 
 main .book {
     background-color: rgb(127, 78, 18);
-    height: 300px;
+    height: auto;
     border-radius: 5px;
     padding: 10px;
     color: var(--header-color);
     
-    display: grid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+main .content {
+    flex: 1;
+    background-color: rgb(141, 105, 64);
+    padding: 10px;
+    border-radius: 5px;
+}
+
+main .content .cover {
+    height: 100px;
 }
 
 main .content .name {
     font-weight: bold;
     font-size: 1.6rem;
+
+    /* The below code will truncate text after 3 lines */
+    overflow: hidden;        /* Hide excess content */
+    text-overflow: ellipsis; /* Add ... at the end */
+    display: -webkit-box;    /* Required for multi-line ellipsis */
+    -webkit-line-clamp: 2;   /* Number of lines to show before truncating */
+    -webkit-box-orient: vertical; /* Vertical orientation for text */
+}
+
+main .content .author {
+    font-style: italic;
 }
 
 main .content .pages {
+    font-family: 'Courier New', Courier, monospace;
     display: grid;
     justify-content: end;
 }
 
 
 main .buttons {
+    padding: 20px 0;
     display: grid;
     grid-auto-flow: column;
     align-content: center;
     justify-content: center;
-    gap: 10px
+    gap: 30px
+}
+
+main button {
+    padding: 5px 20px;
+    border-radius: 7px;
+    border: none;
+    color: var(--header-color);
+}
+
+main button.read {
+    background-color: rgb(49, 148, 74);
+}
+
+main button.delete {
+    background-color: rgb(182, 45, 45);
+}
+
+main .status {
+    align-self: center;
+    border-radius: 2px;
+    border: 1px solid var(--header-color);
+    padding: 5px 20px;
 }

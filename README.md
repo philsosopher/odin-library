@@ -6,21 +6,25 @@ Odin Javascript course project
 - create html skeleton
     - basic layout ✅
     - card list for books ✅
-    - card 
+    - card ✅
     - form (to start with on the side)
     - form dialog box
 - create javascript skeleton
     - book constructor ✅
-    - array of books
+    - array of books ✅
         - default list for testing ✅
-    - function to create a new book and add it to array
+    - function to create a new book and add it to array ✅
+    - function to read array and populate dom library ✅
     - function to update read status of a book
     - function to delete a book
 - connect both
 - some styling ✅
 - full styling
-    - make look better
+    - make look better ✅
     - assign a random color to each book from a predefined pool
+    - color scheme
+    - shadows
+    - padding and spacings
     
 
 ### Reference
