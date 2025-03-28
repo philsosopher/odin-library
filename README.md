@@ -7,12 +7,12 @@ Odin Javascript course project
     - basic layout ✅
     - card list for books ✅
     - card 
+    - form (to start with on the side)
     - form dialog box
-    - form
 - create javascript skeleton
-    - book constructor
+    - book constructor ✅
     - array of books
-        - default list for testing
+        - default list for testing ✅
     - function to create a new book and add it to array
     - function to update read status of a book
     - function to delete a book
