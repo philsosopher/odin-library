@@ -25,27 +25,55 @@ function Book(title, author, pages, status) {
 
 }
 
+// function to toggle read status of a book
+Book.prototype.toggleStatus = function () {
+    this.status = this.status === IN_PROGRESS ? COMPLETED : IN_PROGRESS;
+};
+
 /**
  * Generates a sample list of books and adds them to myLibrary
  * @returns {void}
  */
 function sampleBooks() {
-    myLibrary.push(new Book("Atomic Habits", "James Clear", 320, "read"));
-    myLibrary.push(new Book("Deep Work", "Cal Newport", 304, "unread"));
-    myLibrary.push(new Book("The Pragmatic Programmer", "Andrew Hunt & David Thomas", 352, "read"));
-    myLibrary.push(new Book("Clean Code", "Robert C. Martin", 464, "unread"));
-    myLibrary.push(new Book("The Alchemist", "Paulo Coelho", 208, "read"));
-    myLibrary.push(new Book("Sapiens: A Brief History of Humankind", "Yuval Noah Harari", 498, "unread"));
-    myLibrary.push(new Book("Thinking, Fast and Slow", "Daniel Kahneman", 499, "read"));
-    myLibrary.push(new Book("Zero to One", "Peter Thiel", 224, "unread"));
-    myLibrary.push(new Book("The Subtle Art of Not Giving a F*ck", "Mark Manson", 224, "read"));
-    myLibrary.push(new Book("Dune", "Frank Herbert", 688, "unread"));
-    myLibrary.push(new Book("1984", "George Orwell", 328, "read"));
-    myLibrary.push(new Book("To Kill a Mockingbird", "Harper Lee", 281, "unread"));
-    myLibrary.push(new Book("Meditations", "Marcus Aurelius", 256, "read"));
-    myLibrary.push(new Book("The Lean Startup", "Eric Ries", 336, "unread"));
-    myLibrary.push(new Book("Rich Dad Poor Dad", "Robert Kiyosaki", 336, "read"));
+    myLibrary.push(new Book("Atomic Habits", "James Clear", 320, COMPLETED));
+    myLibrary.push(new Book("Deep Work", "Cal Newport", 304, IN_PROGRESS));
+    myLibrary.push(new Book("The Pragmatic Programmer", "Andrew Hunt & David Thomas", 352, COMPLETED));
+    myLibrary.push(new Book("Clean Code", "Robert C. Martin", 464, IN_PROGRESS));
+    myLibrary.push(new Book("The Alchemist", "Paulo Coelho", 208, COMPLETED));
+    myLibrary.push(new Book("Sapiens: A Brief History of Humankind", "Yuval Noah Harari", 498, IN_PROGRESS));
+    myLibrary.push(new Book("Thinking, Fast and Slow", "Daniel Kahneman", 499, COMPLETED));
+    myLibrary.push(new Book("Zero to One", "Peter Thiel", 224, IN_PROGRESS));
+    myLibrary.push(new Book("The Subtle Art of Not Giving a F*ck", "Mark Manson", 224, COMPLETED));
+    myLibrary.push(new Book("Dune", "Frank Herbert", 688, IN_PROGRESS));
+    myLibrary.push(new Book("1984", "George Orwell", 328, COMPLETED));
+    myLibrary.push(new Book("To Kill a Mockingbird", "Harper Lee", 281, IN_PROGRESS));
+    myLibrary.push(new Book("Meditations", "Marcus Aurelius", 256, COMPLETED));
+    myLibrary.push(new Book("The Lean Startup", "Eric Ries", 336, IN_PROGRESS));
+    myLibrary.push(new Book("Rich Dad Poor Dad", "Robert Kiyosaki", 336, COMPLETED));
 }
+
+function deleteBook(bookId) {
+    if (!confirm("Are you sure you want to delete this book?")) {
+        return;
+    }
+
+    // Delete book from array - Find and remove from array first (data drives the app)
+    const bookIndex = myLibrary.findIndex(b => b.id == bookId);
+    if (bookIndex === -1) {
+        console.warn(`Book with ID ${bookId} not found in library`);
+        return;
+    }
+    myLibrary.splice(bookIndex, 1);
+
+    // Delete book DOM
+    const bookDiv = document.querySelector(`main .book[data-id="${bookId}"]`);
+    if (bookDiv) {
+        bookDiv.remove();
+    } else {
+        console.warn(`DOM element for book ID ${bookId} not found`);
+    }
+}
+
 
 /**
  * Creates a DOM element representing a book and its details.
@@ -67,10 +95,18 @@ function createBookDom(book) {
     const deleteButton = document.createElement("button");
     deleteButton.classList.add("delete");
     deleteButton.textContent = "Delete";
+    deleteButton.addEventListener("click", () => {
+        deleteBook(book.id);
+    });
     
     const readButton = document.createElement("button");
     readButton.classList.add("read");
-    readButton.textContent = book.status == IN_PROGRESS ? READ : UNREAD;
+    readButton.textContent = book.status === IN_PROGRESS ? READ : UNREAD;
+    readButton.addEventListener("click", () => {
+        book.toggleStatus();
+        readButton.textContent = book.status === IN_PROGRESS ? READ : UNREAD;
+        statusP.textContent = book.status;
+    });
 
     const buttonsDiv = document.createElement("div");
     buttonsDiv.classList.add("buttons");

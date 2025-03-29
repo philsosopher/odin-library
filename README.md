@@ -15,8 +15,9 @@ Odin Javascript course project
         - default list for testing ✅
     - function to create a new book and add it to array ✅
     - function to read array and populate dom library ✅
-    - function to update read status of a book
-    - function to delete a book
+    - function to update read status of a book ✅
+    - function to delete a book ✅
+    - form related functions
 - connect both
 - some styling ✅
 - full styling
