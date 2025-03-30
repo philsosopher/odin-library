@@ -10,10 +10,9 @@
 </head>
 
 <body>
-    <div class="dialog" style="height:500px">
-        <div class="form">
+        <dialog class="form">
             <form action="">
-                <button class="close" type="button" method="dialog">+</button>
+                <button class="close" type="submit" method="dialog" formnovalidate>+</button>
                 <div class="heading">
                     New Book
                 </div>
@@ -39,12 +38,11 @@
                 </div>
                 <button class="addbook">Add Book</button>
             </form>
-        </div>
-    </div>
+        </dialog>
     <div class="container">
         <header>
             <h1>Library</h1>
-            <button title="Add a book">+</button>
+            <button class="opendialog" title="Add a book">+</button>
         </header>
         <main>
             <!-- <div class="book">

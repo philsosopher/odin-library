@@ -155,36 +155,47 @@ function updateLibrary() {
     });
 }
 
-function submitAddBook(event) {
-    event.preventDefault(); // prevent default action of form sending data to server
-
-    // collect book details
-    const title = document.getElementById("title").value.trim();
-    const author = document.getElementById("author").value.trim();
-    const pages = document.getElementById("pages").value.trim();
-    const status = document.querySelector('input[name="status"]:checked').value;
-    console.log(status); 
-
-    // create new book and dom
-    const book = new Book(title, author, pages, status);
-    const bookDom = createBookDom(book);
-
-    // add book and dom to Libarary and LibraryDOm
-    myLibrary.push(book);
-    myLibraryDom.appendChild(bookDom);
-
-    // reset form
-    event.target.reset();
-
-
-}
-
 function setupDomEvents() {
+    const formDialog = document.querySelector("dialog.form");
     const bookForm = document.querySelector(".form form");
-    const formSubmitButton = document.querySelector(".form form .addbook");
-    const dialogCloseButton = document.querySelector(".form button.close");
+    // const formSubmitButton = document.querySelector(".form form .addbook");
+    // const dialogCloseButton = document.querySelector(".form button.close");
+    const openDialogButton = document.querySelector("header button.opendialog");
 
-    bookForm.addEventListener("submit", submitAddBook);
+    openDialogButton.addEventListener("click", () => {
+        formDialog.showModal();
+    });
+    bookForm.addEventListener("submit", (event) => {
+        event.preventDefault(); // prevent default action of form sending data to server
+
+        // collect book details
+        const title = document.getElementById("title").value.trim();
+        const author = document.getElementById("author").value.trim();
+        const pages = document.getElementById("pages").value.trim();
+        const status = document.querySelector('input[name="status"]:checked');
+        console.log(status); 
+
+        if (!title || !author || !pages || !status) {
+            console.log("Not all fields specified");
+            event.target.reset();
+            formDialog.close();
+            return;
+        }
+    
+        // create new book and dom
+        const book = new Book(title, author, pages, status.value);
+        const bookDom = createBookDom(book);
+    
+        // add book and dom to Libarary and LibraryDOm
+        myLibrary.push(book);
+        myLibraryDom.appendChild(bookDom);
+    
+        // reset form
+        event.target.reset();
+
+        // close dialog
+        formDialog.close();
+    });
 }
 
 function main() {

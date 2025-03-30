@@ -19,7 +19,7 @@
     outline: 1px solid red;
 } */
 header {
-    background-color: rgb(192, 117, 90);
+    background-color: rgb(168, 102, 78);
     color: var(--header-color);
     font-weight: bold;
     font-size: 2rem;
@@ -47,9 +47,13 @@ header button {
 }
 
 header button:hover {
-    --add-hover-color: rgb(145, 85, 56);
+    --add-hover-color: rgb(255, 250, 248);
     border-color: var(--add-hover-color);
     color: var(--add-hover-color);
+}
+
+header button:active {
+    transform: scale(0.95);
 }
 
 footer {
