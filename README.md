@@ -3,7 +3,7 @@ Odin Javascript course project
 
 
 ## Plan
-- create html skeleton
+- create html skeleton ✅
     - basic layout ✅
     - card list for books ✅
     - card ✅
@@ -11,7 +11,7 @@ Odin Javascript course project
         - form elements ✅
         - form attributes and submit button behaviour ✅
     - form dialog box ✅
-- create javascript skeleton
+- create javascript skeleton ✅
     - book constructor ✅
     - array of books ✅
         - default list for testing ✅
@@ -21,17 +21,17 @@ Odin Javascript course project
     - function to delete a book ✅
     - form related functions ✅
     - dialog related ✅
-    - final touches
-- connect both
+    - final touches ✅
+- connect both ✅
 - some styling ✅
-- full styling
+- full styling 
     - make look better ✅
     - form styling ✅
-    - style dialog
+    - style dialog ✅
     - assign a random color to each book from a predefined pool
     - color scheme
-    - shadows
-    - padding and spacings
+    - shadows ✅
+    - padding and spacings ✅
     
 
 ### Reference
