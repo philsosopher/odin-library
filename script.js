@@ -39,17 +39,17 @@ function sampleBooks() {
     myLibrary.push(new Book("Deep Work", "Cal Newport", 304, IN_PROGRESS));
     myLibrary.push(new Book("The Pragmatic Programmer", "Andrew Hunt & David Thomas", 352, COMPLETED));
     myLibrary.push(new Book("Clean Code", "Robert C. Martin", 464, IN_PROGRESS));
-    myLibrary.push(new Book("The Alchemist", "Paulo Coelho", 208, COMPLETED));
-    myLibrary.push(new Book("Sapiens: A Brief History of Humankind", "Yuval Noah Harari", 498, IN_PROGRESS));
-    myLibrary.push(new Book("Thinking, Fast and Slow", "Daniel Kahneman", 499, COMPLETED));
-    myLibrary.push(new Book("Zero to One", "Peter Thiel", 224, IN_PROGRESS));
-    myLibrary.push(new Book("The Subtle Art of Not Giving a F*ck", "Mark Manson", 224, COMPLETED));
-    myLibrary.push(new Book("Dune", "Frank Herbert", 688, IN_PROGRESS));
-    myLibrary.push(new Book("1984", "George Orwell", 328, COMPLETED));
-    myLibrary.push(new Book("To Kill a Mockingbird", "Harper Lee", 281, IN_PROGRESS));
-    myLibrary.push(new Book("Meditations", "Marcus Aurelius", 256, COMPLETED));
-    myLibrary.push(new Book("The Lean Startup", "Eric Ries", 336, IN_PROGRESS));
-    myLibrary.push(new Book("Rich Dad Poor Dad", "Robert Kiyosaki", 336, COMPLETED));
+    // myLibrary.push(new Book("The Alchemist", "Paulo Coelho", 208, COMPLETED));
+    // myLibrary.push(new Book("Sapiens: A Brief History of Humankind", "Yuval Noah Harari", 498, IN_PROGRESS));
+    // myLibrary.push(new Book("Thinking, Fast and Slow", "Daniel Kahneman", 499, COMPLETED));
+    // myLibrary.push(new Book("Zero to One", "Peter Thiel", 224, IN_PROGRESS));
+    // myLibrary.push(new Book("The Subtle Art of Not Giving a F*ck", "Mark Manson", 224, COMPLETED));
+    // myLibrary.push(new Book("Dune", "Frank Herbert", 688, IN_PROGRESS));
+    // myLibrary.push(new Book("1984", "George Orwell", 328, COMPLETED));
+    // myLibrary.push(new Book("To Kill a Mockingbird", "Harper Lee", 281, IN_PROGRESS));
+    // myLibrary.push(new Book("Meditations", "Marcus Aurelius", 256, COMPLETED));
+    // myLibrary.push(new Book("The Lean Startup", "Eric Ries", 336, IN_PROGRESS));
+    // myLibrary.push(new Book("Rich Dad Poor Dad", "Robert Kiyosaki", 336, COMPLETED));
 }
 
 function deleteBook(bookId) {
@@ -155,7 +155,40 @@ function updateLibrary() {
     });
 }
 
+function submitAddBook(event) {
+    event.preventDefault(); // prevent default action of form sending data to server
+
+    // collect book details
+    const title = document.getElementById("title").value.trim();
+    const author = document.getElementById("author").value.trim();
+    const pages = document.getElementById("pages").value.trim();
+    const status = document.querySelector('input[name="status"]:checked').value;
+    console.log(status); 
+
+    // create new book and dom
+    const book = new Book(title, author, pages, status);
+    const bookDom = createBookDom(book);
+
+    // add book and dom to Libarary and LibraryDOm
+    myLibrary.push(book);
+    myLibraryDom.appendChild(bookDom);
+
+    // reset form
+    event.target.reset();
+
+
+}
+
+function setupDomEvents() {
+    const bookForm = document.querySelector(".form form");
+    const formSubmitButton = document.querySelector(".form form .addbook");
+    const dialogCloseButton = document.querySelector(".form button.close");
+
+    bookForm.addEventListener("submit", submitAddBook);
+}
+
 function main() {
+    setupDomEvents();
     sampleBooks();
     updateLibrary();
 }

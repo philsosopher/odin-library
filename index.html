@@ -10,10 +10,41 @@
 </head>
 
 <body>
+    <div class="dialog" style="height:500px">
+        <div class="form">
+            <form action="">
+                <button class="close" type="button" method="dialog">+</button>
+                <div class="heading">
+                    New Book
+                </div>
+                <p class="textinput">
+                    <label for="title">Title</label><input type="text" id="title" required>
+                </p>
+                <p class="textinput">
+                    <label for="author">Author</label><input type="text" id="author" required>
+                </p>
+                <p class="textinput">
+                    <label for="pages">Pages</label><input type="number" id="pages" required>
+                </p>
+                <div class="status">
+                    <legend>Status of book</legend>
+                    <div>
+                        <input type="radio" id="completed" name="status" value="Completed" required><label
+                        for="completed">Completed</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="inprogress" name="status" value="In Progress" required><label for="inprogress">In
+                        Progress</label>
+                    </div>
+                </div>
+                <button class="addbook">Add Book</button>
+            </form>
+        </div>
+    </div>
     <div class="container">
         <header>
             <h1>Library</h1>
-            <button>+</button>
+            <button title="Add a book">+</button>
         </header>
         <main>
             <!-- <div class="book">

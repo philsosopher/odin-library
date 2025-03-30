@@ -7,7 +7,9 @@ Odin Javascript course project
     - basic layout ✅
     - card list for books ✅
     - card ✅
-    - form (to start with on the side)
+    - form (to start with on the side) ✅
+        - form elements ✅
+        - form attributes and submit button behaviour ✅
     - form dialog box
 - create javascript skeleton
     - book constructor ✅
@@ -17,11 +19,14 @@ Odin Javascript course project
     - function to read array and populate dom library ✅
     - function to update read status of a book ✅
     - function to delete a book ✅
-    - form related functions
+    - form related functions ✅
+    - dialog related
+    - final touches
 - connect both
 - some styling ✅
 - full styling
     - make look better ✅
+    - form styling ✅
     - assign a random color to each book from a predefined pool
     - color scheme
     - shadows
