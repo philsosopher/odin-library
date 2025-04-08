@@ -159,7 +159,7 @@ function setupDomEvents() {
     const formDialog = document.querySelector("dialog.form");
     const bookForm = document.querySelector(".form form");
     // const formSubmitButton = document.querySelector(".form form .addbook");
-    // const dialogCloseButton = document.querySelector(".form button.close");
+    const dialogCloseButton = document.querySelector(".form button.close");
     const openDialogButton = document.querySelector("header button.opendialog");
 
     openDialogButton.addEventListener("click", () => {
@@ -194,6 +194,10 @@ function setupDomEvents() {
         event.target.reset();
 
         // close dialog
+        formDialog.close();
+    });
+    dialogCloseButton.addEventListener("click", () => {
+        bookForm.reset;
         formDialog.close();
     });
 }
