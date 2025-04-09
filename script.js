@@ -7,28 +7,30 @@ const COMPLETED = "Completed";
 const READ = "Read";
 const UNREAD = "Unread";
 
-/**
- * Represents a book and its properties
- * @constructor
- * @param {string} title - The title of the book
- * @param {string} author - The author of the book
- * @param {number} pages - The number of pages in the book
- * @param {string} status - The reading status of the book (e.g., 'read', 'unread')
- * @returns {Object} A new Book object
- */
-function Book(title, author, pages, status) {
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.status = status;
-    this.id = crypto.randomUUID();
+class Book {
 
+    /**
+     * 
+     * @param {string} title - The title of the book
+     * @param {string} author - The author of the book
+     * @param {number} pages - The number of pages in the book
+     * @param {string} status - The reading status of the book (e.g., 'read', 'unread')
+    */
+    constructor(title, author, pages, status) {
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.status = status;
+        this.id = crypto.randomUUID();
+    }
+
+    /**
+     * function to toggle read status of a book
+     */
+    toggleStatus() {
+        this.status = this.status === IN_PROGRESS ? COMPLETED : IN_PROGRESS;
+    }
 }
-
-// function to toggle read status of a book
-Book.prototype.toggleStatus = function () {
-    this.status = this.status === IN_PROGRESS ? COMPLETED : IN_PROGRESS;
-};
 
 /**
  * Generates a sample list of books and adds them to myLibrary
